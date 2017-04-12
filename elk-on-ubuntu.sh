@@ -1,9 +1,9 @@
 (
   printf "Install Oracle"
 
-  add-apt-repository -y ppa:webupd8team/java && \
-  apt-get update && |
-  apt-get -y install oracle-java8-installer 
+  add-apt-repository -y ppa:webupd8team/java &&\
+  apt-get update &&\
+  apt-get -y install oracle-java8-installer  &&\
 ) && echo "PASS" || echo "FAIL"
 
 
@@ -11,8 +11,7 @@
   printf "Install ElasticSearch"
 
   wget -qO - https://packages.elastic.co/GPG-KEY-elasticsearch | apt-key add - && \
-  echo "deb http://packages.elastic.co/elasticsearch/2.x/debian stable main" | tee -a
-  /etc/apt/sources.list.d/elasticsearch-2.x.list && \
+  echo "deb http://packages.elastic.co/elasticsearch/2.x/debian stable main" | tee -a /etc/apt/sources.list.d/elasticsearch-2.x.list && \
   apt-get update && \
   apt-get -y install elasticsearch  && \
   service elasticsearch restart && \
@@ -22,7 +21,7 @@
 (
   printf "Install Kibana""
 
-  echo "deb http://packages.elastic.co/kibana/4.4/debian stable main" | tee -a /etc/apt/sources.list.d/kibana-4.4.x.list
+  echo "deb http://packages.elastic.co/kibana/4.4/debian stable main" | tee -a /etc/apt/sources.list.d/kibana-4.4.x.list && \
   apt-get update && \
   apt-get -y install kibana && \
   update-rc.d kibana defaults 96 9 && \
