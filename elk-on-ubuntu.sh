@@ -3,7 +3,7 @@
 
   add-apt-repository -y ppa:webupd8team/java &&\
   apt-get update &&\
-  apt-get -y install oracle-java8-installer  &&\
+  apt-get -y install oracle-java8-installer
 ) && echo "PASS" || echo "FAIL"
 
 
@@ -19,7 +19,7 @@
 ) && echo "PASS" || echo "FAIL"
 
 (
-  printf "Install Kibana""
+  printf "Install Kibana"
 
   echo "deb http://packages.elastic.co/kibana/4.4/debian stable main" | tee -a /etc/apt/sources.list.d/kibana-4.4.x.list && \
   apt-get update && \
@@ -44,11 +44,12 @@ server {
   location / {
     proxy_pass http://localhost:5601;
     proxy_http_version 1.1;
-    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Upgrade \$http_upgrade;
     proxy_set_header Connection 'upgrade';
-    proxy_set_header Host $host;
-    proxy_cache_bypass $http_upgrade;        
+    proxy_set_header Host \$host;
+    proxy_cache_bypass \$http_upgrade;
   }
+}
 EOF
   [ $? -eq 0 ] && service nginx restart
 ) && echo "PASS" || echo "FAIL"
